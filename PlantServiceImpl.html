@@ -1,0 +1,87 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html><head><title>Python: module PlantServiceImpl</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+</head><body bgcolor="#f0f0f8">
+
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="heading">
+<tr bgcolor="#7799ee">
+<td valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial">&nbsp;<br><big><big><strong>PlantServiceImpl</strong></big></big></font></td
+><td align=right valign=bottom
+><font color="#ffffff" face="helvetica, arial"><a href=".">index</a><br><a href="file:c%3A%5Cusers%5Cvlados%20papandos%5Cpycharmprojects%5Cplantscheduling%5Cplantscheduling%5Cplantserviceimpl.py">c:\users\vlados papandos\pycharmprojects\plantscheduling\plantscheduling\plantserviceimpl.py</a></font></td></tr></table>
+    <p></p>
+<p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#ee77aa">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Classes</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#ee77aa"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><dl>
+<dt><font face="helvetica, arial"><a href="builtins.html#object">builtins.object</a>
+</font></dt><dd>
+<dl>
+<dt><font face="helvetica, arial"><a href="PlantServiceImpl.html#PlantServiceImpl">PlantServiceImpl</a>
+</font></dt></dl>
+</dd>
+</dl>
+ <p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#ffc8d8">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#000000" face="helvetica, arial"><a name="PlantServiceImpl">class <strong>PlantServiceImpl</strong></a>(<a href="builtins.html#object">builtins.object</a>)</font></td></tr>
+    
+<tr><td bgcolor="#ffc8d8"><tt>&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%">Methods defined here:<br>
+<dl><dt><a name="PlantServiceImpl-deleteEvent"><strong>deleteEvent</strong></a>(self, name)</dt><dd><tt>Deleting&nbsp;an&nbsp;alredy&nbsp;existing&nbsp;instance&nbsp;of&nbsp;Plant<br>
+using&nbsp;field&nbsp;_name&nbsp;as&nbsp;a&nbsp;key.<br>
+&nbsp;<br>
+&gt;&gt;&gt;&nbsp;pl&nbsp;=&nbsp;<a href="#PlantServiceImpl">PlantServiceImpl</a>()<br>
+&gt;&gt;&gt;&nbsp;pl.<a href="#PlantServiceImpl-newEvent">newEvent</a>("Lilly",&nbsp;"a",&nbsp;"s",&nbsp;"q",&nbsp;"q")<br>
+&gt;&gt;&gt;&nbsp;pl.<a href="#PlantServiceImpl-deleteEvent">deleteEvent</a>("L")<br>
+No&nbsp;match.<br>
+&gt;&gt;&gt;&nbsp;pl.<a href="#PlantServiceImpl-deleteEvent">deleteEvent</a>("Lilly")<br>
+&gt;&gt;&gt;&nbsp;len(pl.actionlist)&nbsp;==&nbsp;0<br>
+True</tt></dd></dl>
+
+<dl><dt><a name="PlantServiceImpl-displayTable"><strong>displayTable</strong></a>(self)</dt><dd><tt>Display&nbsp;the&nbsp;schedule&nbsp;as&nbsp;set&nbsp;of&nbsp;ASCII&nbsp;symbols&nbsp;in&nbsp;console.<br>
+&nbsp;<br>
+&gt;&gt;&gt;&nbsp;pl&nbsp;=&nbsp;<a href="#PlantServiceImpl">PlantServiceImpl</a>()<br>
+&gt;&gt;&gt;&nbsp;table&nbsp;=&nbsp;pl.<a href="#PlantServiceImpl-displayTable">displayTable</a>()<br>
+&gt;&gt;&gt;&nbsp;len(table)&nbsp;==&nbsp;1<br>
+True<br>
+&gt;&gt;&gt;&nbsp;pl.<a href="#PlantServiceImpl-newEvent">newEvent</a>("Lilly",&nbsp;"a",&nbsp;"s",&nbsp;"q",&nbsp;"q")<br>
+&gt;&gt;&gt;&nbsp;table&nbsp;=&nbsp;pl.<a href="#PlantServiceImpl-displayTable">displayTable</a>()<br>
+&gt;&gt;&gt;&nbsp;len(table)&nbsp;==&nbsp;2<br>
+True<br>
+&gt;&gt;&gt;&nbsp;pl.<a href="#PlantServiceImpl-deleteEvent">deleteEvent</a>("Lilly")<br>
+&gt;&gt;&gt;&nbsp;table&nbsp;=&nbsp;pl.<a href="#PlantServiceImpl-displayTable">displayTable</a>()<br>
+&gt;&gt;&gt;&nbsp;len(table)&nbsp;==&nbsp;1<br>
+True</tt></dd></dl>
+
+<dl><dt><a name="PlantServiceImpl-newEvent"><strong>newEvent</strong></a>(self, name, type, actiontype, date, time)</dt><dd><tt>Creating&nbsp;a&nbsp;new&nbsp;instance&nbsp;of&nbsp;Plant&nbsp;defining&nbsp;all&nbsp;the<br>
+information&nbsp;needed&nbsp;to&nbsp;be&nbsp;performed&nbsp;in&nbsp;th&nbsp;schedule.<br>
+&nbsp;<br>
+&gt;&gt;&gt;&nbsp;pl&nbsp;=&nbsp;<a href="#PlantServiceImpl">PlantServiceImpl</a>()<br>
+&gt;&gt;&gt;&nbsp;pl.<a href="#PlantServiceImpl-newEvent">newEvent</a>("Lilly",&nbsp;"a",&nbsp;"s",&nbsp;"q",&nbsp;"q")<br>
+&gt;&gt;&gt;&nbsp;len(pl.actionlist)&nbsp;==&nbsp;1<br>
+True<br>
+&gt;&gt;&gt;&nbsp;pl.<a href="#PlantServiceImpl-newEvent">newEvent</a>("Lilly",&nbsp;"1",&nbsp;"2",&nbsp;"3",&nbsp;"4")<br>
+This&nbsp;plant&nbsp;is&nbsp;already&nbsp;in&nbsp;the&nbsp;list<br>
+&gt;&gt;&gt;&nbsp;len(pl.actionlist)&nbsp;==&nbsp;1<br>
+True</tt></dd></dl>
+
+<hr>
+Data descriptors defined here:<br>
+<dl><dt><strong>__dict__</strong></dt>
+<dd><tt>dictionary&nbsp;for&nbsp;instance&nbsp;variables&nbsp;(if&nbsp;defined)</tt></dd>
+</dl>
+<dl><dt><strong>__weakref__</strong></dt>
+<dd><tt>list&nbsp;of&nbsp;weak&nbsp;references&nbsp;to&nbsp;the&nbsp;object&nbsp;(if&nbsp;defined)</tt></dd>
+</dl>
+<hr>
+Data and other attributes defined here:<br>
+<dl><dt><strong>actionlist</strong> = []</dl>
+
+</td></tr></table></td></tr></table>
+</body></html>

@@ -7,8 +7,7 @@ from plantscheduling.PlantServiceImpl import PlantServiceImpl
 
 class Display:
 
-    plantservice = PlantServiceImpl()
-
+    service = PlantServiceImpl()
 
     menu = {}
     menu['1'] = "Add Plant."
@@ -17,6 +16,9 @@ class Display:
     menu['4'] = "Exit."
 
     def displayMenu(self):
+        """View implementation,
+        that creates a simple menu in console.
+        """
         sortedmenu = collections.OrderedDict(sorted(self.menu.items()))
         for entry in sortedmenu:
             print(entry, self.menu[entry])
@@ -30,13 +32,13 @@ class Display:
                     date = input("Enter date of the watering: ")
                     time = input("Enter time of the watering: ")
 
-                    self.plantservice.newEvent(name, type, actiontype, date, time)
+                    self.service.newEvent(name, type, actiontype, date, time)
 
                 elif selection == '2':
 
                     name = input("Enter name of the plant to be deleted: ")
 
-                    self.plantservice.deleteEvent(name)
+                    self.service.deleteEvent(name)
 
                 elif selection == '3':
 
@@ -51,4 +53,3 @@ class Display:
 if __name__ == "__main__":
     disp = Display()
     disp.displayMenu()
-
