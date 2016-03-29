@@ -1,21 +1,31 @@
 import collections
+import configparser
+import sys
+import os.path
 
 from terminaltables import AsciiTable
+from plantscheduling.JsonImpl import JsonImpl
+from plantscheduling.PickleImpl import PickleImpl
+from plantscheduling.PlantImpl import PlantImpl
+from plantscheduling.YAMLImpl import YAMLImpl
 
-from plantscheduling.PlantServiceImpl import PlantServiceImpl
+sys.path.append(os.path.join(os.path.dirname(__file__), '..'))
 
 
 class Display:
 
-    service = PlantServiceImpl()
+    config = configparser.ConfigParser()
+    config.read('serialization.cfg')
+    serializationType = config['Current Method']['id']
 
     menu = {}
     menu['1'] = "Add Plant."
     menu['2'] = "Delete Plant."
     menu['3'] = "Show Timetable."
-    menu['4'] = "Exit."
+    menu['4'] = "Serialize in preferable way"
+    menu['5'] = "Exit."
 
-    def displayMenu(self):
+    def displayMenu(self, inputfunc=input):
         """View implementation,
         that creates a simple menu in console.
         """
@@ -23,7 +33,7 @@ class Display:
         for entry in sortedmenu:
             print(entry, self.menu[entry])
         while True:
-                selection = input("Please Select:")
+                selection = inputfunc("Please Select:")
                 if selection == '1':
 
                     name = input("Enter name of the plant: ")
@@ -32,20 +42,34 @@ class Display:
                     date = input("Enter date of the watering: ")
                     time = input("Enter time of the watering: ")
 
-                    self.service.newEvent(name, type, actiontype, date, time)
+                    PlantImpl.newEvent(name, type, actiontype, date, time)
 
                 elif selection == '2':
 
                     name = input("Enter name of the plant to be deleted: ")
 
-                    self.service.deleteEvent(name)
+                    PlantImpl.deleteEvent(name)
 
                 elif selection == '3':
 
-                    table = AsciiTable(self.plantservice.displayTable())
+                    table = AsciiTable(PlantImpl.displayTable())
                     print(table.table)
 
                 elif selection == '4':
+
+                    if self.serializationType == '1':
+                        JsonImpl().writeJson('data.json', 'w', PlantImpl.actionlist)
+                        print('Saved to JSON')
+                    elif self.serializationType == '2':
+                        PickleImpl().writePickle('data.p', 'wb', PlantImpl.actionlist)
+                        print('Saved to Pickle')
+                    elif self.serializationType == '3':
+                        YAMLImpl().writeYAML('data.yaml', 'w', PlantImpl.actionlist)
+                        print('Saved to YAML')
+                    else:
+                        print("Oops, something wrong with configuration file.")
+
+                elif selection == '5':
                     break
                 else:
                     print("Unknown Option Selected!")
